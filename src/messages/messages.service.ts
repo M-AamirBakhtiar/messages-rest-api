@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
+
+import { CreateMessageDto } from './dtos/create-message.dto';
 import { MessagesRepository } from './messages.repository';
 
 @Injectable()
-export class MessageService {
+export class MessagesService {
   constructor(private messagesRepository: MessagesRepository) {}
 
   findOne(id: string) {
@@ -13,7 +15,7 @@ export class MessageService {
     return this.messagesRepository.findAll();
   }
 
-  create(content: string) {
-    return this.messagesRepository.create(content);
+  create(createMessageDto: CreateMessageDto) {
+    return this.messagesRepository.create(createMessageDto);
   }
 }
